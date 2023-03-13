@@ -85,8 +85,41 @@ const Navbar: React.FC = () => {
             alignSelf="center"
             onClick={() => toggleColorMode()}
           />
+          <Button
+            as={ReactLink}
+            to="/login"
+            p={2}
+            fontSize="sm"
+            fontWeight={300}
+            variant="link"
+          >
+            Sign In
+          </Button>
+          <Button
+            as={ReactLink}
+            to="/registration"
+            m={2}
+            fontSize="sm"
+            fontWeight={550}
+            _hover={{ bg: "green.300" }}
+            bg="green:400"
+            color="white"
+          >
+            Sign Up
+          </Button>
         </Flex>
       </Flex>
+      {isOpen ? (
+        <Box pb={4} display={{ md: "none" }}>
+          <Stack as="nav" spacing={4}>
+            {links.map((link) => (
+              <NavLink key={link.linkName} path={link.path}>
+                {link.linkName}
+              </NavLink>
+            ))}
+          </Stack>
+        </Box>
+      ) : null}
     </Box>
   );
 };
