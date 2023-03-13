@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
             </Flex>
           </Link>
 
-          <HStack>
+          <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
               <NavLink key={link.linkName} path={link.path}>
                 {link.linkName}
@@ -99,6 +99,7 @@ const Navbar: React.FC = () => {
             as={ReactLink}
             to="/registration"
             m={2}
+            display={{ base: "none", md: "inline-flex" }}
             fontSize="sm"
             fontWeight={550}
             _hover={{ bg: "green.300" }}
@@ -117,6 +118,9 @@ const Navbar: React.FC = () => {
                 {link.linkName}
               </NavLink>
             ))}
+            <NavLink key="sign up" path="/registration">
+              Sign Up
+            </NavLink>
           </Stack>
         </Box>
       ) : null}
