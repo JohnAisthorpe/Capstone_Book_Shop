@@ -8,7 +8,7 @@ export const books = [
     image: "/images/atomic_habits.jpg",
     category: "self-help",
     price: 14,
-    stock: 10,
+    stock: 0,
   },
   {
     _id: 2,
