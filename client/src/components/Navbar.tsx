@@ -18,38 +18,32 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { GiBookCover } from "react-icons/gi";
 import { ReactNode } from "react";
 
-type Link = {
-  linkName: string;
-  path: string;
-};
-
-const links: Link[] = [
+const links = [
   { linkName: "Books", path: "/books" },
-  { linkName: "shoppingCart", path: "/cart" },
+  { linkName: "ShoppingCart", path: "/cart" },
 ];
+const NavLink: React.FC<{
+  path: string;
+  children?: React.ReactNode;
+}> = ({ path, children }) => (
+  <Link
+    as={ReactLink}
+    to={path}
+    px={2}
+    py={2}
+    rounded="md"
+    _hover={{
+      textDecoration: "none",
+      bg: useColorModeValue("gray.200", "gray.600"),
+    }}
+  >
+    {children}
+  </Link>
+);
 
 const Navbar: React.FC = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-
-  const NavLink: React.FC<{
-    path: string;
-    children?: React.ReactNode;
-  }> = ({ path, children }) => (
-    <Link
-      as={ReactLink}
-      to={path}
-      px={2}
-      py={2}
-      rounded="md"
-      _hover={{
-        textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.900"),
-      }}
-    >
-      {children}
-    </Link>
-  );
 
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
@@ -63,9 +57,9 @@ const Navbar: React.FC = () => {
         />
         <HStack>
           <Link as={ReactLink} to="/">
-            <Flex alignItems="center">
+            <Flex alignItems="center" gap="10px">
               <Icon as={GiBookCover} h={6} w={6} color="blue.500" />
-              <Text fontWeight="semibold">Capstone Books</Text>
+              <Text fontWeight="bold">Capstone Books</Text>
             </Flex>
           </Link>
 
@@ -91,7 +85,6 @@ const Navbar: React.FC = () => {
             p={2}
             fontSize="sm"
             fontWeight={300}
-            variant="link"
           >
             Sign In
           </Button>
@@ -102,8 +95,8 @@ const Navbar: React.FC = () => {
             display={{ base: "none", md: "inline-flex" }}
             fontSize="sm"
             fontWeight={550}
-            _hover={{ bg: "green.300" }}
-            bg="green:400"
+            _hover={{ bg: "blue.300" }}
+            bg="blue.400"
             color="white"
           >
             Sign Up
