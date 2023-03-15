@@ -10,3 +10,10 @@ dotenv_1.default.config();
 (0, database_1.default)();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+const port = process.env.PORT || 4999;
+//if we hit this route then we go to the book route.
+// app.use("/api/books", bookRoutes);
+app.get("/", (req, res) => res.send("YO"));
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
