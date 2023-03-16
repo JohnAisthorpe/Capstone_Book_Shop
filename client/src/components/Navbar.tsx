@@ -20,7 +20,7 @@ import { ReactNode } from "react";
 
 const links = [
   { linkName: "Books", path: "/books" },
-  { linkName: "ShoppingCart", path: "/cart" },
+  { linkName: "Basket", path: "/basket" },
 ];
 const NavLink: React.FC<{
   path: string;
