@@ -12,7 +12,7 @@ node_modules/
 
 # production
 /build
-images
+
 
 # misc
 .DS_Store
