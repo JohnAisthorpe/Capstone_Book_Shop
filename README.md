@@ -1,9 +1,43 @@
-# Capstone_Book_Shop
+# Capstone Book Shop 📚
 
-To run this projects:
+A simple yet elegant book shop application.
 
-'npm i' in 'capstone_book_shop' and client
+## Getting Started
 
-'npm run app' in Capstone_book_shop
+Follow these steps to set up and run the project on your local machine.
 
-make sure you have a .env file with string from mongoDB.
+### Prerequisites
+
+- Node.js
+- npm
+- MongoDB
+
+### Installation
+
+1. Clone the repository:
+
+git clone git@github.com:JohnAisthorpe/Capstone_Book_Shop.git
+cd Capstone_Book_Shop
+
+2. Install the required packages in both the root and client directories:
+
+npm install
+cd client
+npm install
+cd ..
+
+3. Create a `.env` file in the root directory with your MongoDB connection string:
+
+MONGODB_URI=your_mongodb_connection_string_here
+
+### Running the Application
+
+To run the application, simply execute the following command in the root directory:
+
+npm run app
+
+This will start both the backend server and the frontend client.
+
+Now you can visit the Capstone Book Shop application in your browser at `http://localhost:3000`.
+
+Please give feedback, thanks for looking.
