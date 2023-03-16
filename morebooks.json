@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Bounce",
+    "author": "Matthew Syed",
+    "description": "What are the real secrets of sporting success, and what lessons do they offer about life? Why doesn't Tiger Woods \"choke\"? Why are the best figure skaters those that have fallen over the most and why has one small street in Reading produced more top table tennis players than the rest of the country put together.",
+    "image": "/images/bounce.jpg",
+    "category": "self-help",
+    "price": 9,
+    "stock": 3
+  },
+  {
+    "title": "Anna Karenina",
+    "author": "Leo Tolstoy",
+    "description": "Trapped in a stifling marriage, Anna Karenina is swept off her feet by dashing Count Vronsky. Rejected by society, the two lovers flee to Italy, where Anna finds herself isolated from all except the man she loves, and who loves her. But can they live by love alone? In this novel of astonishing scope and grandeur, Leo Tolstoy, the great master of Russian literature, charts the course of the human heart.",
+    "image": "/images/Anna.jpg",
+    "category": "fiction",
+    "price": 11,
+    "stock": 24
+  },
+  {
+    "title": "The Fall of Númenor",
+    "author": "J.R.R. Tolkien",
+    "description": "It was not until Christopher Tolkien published The Silmarillion after his father’s death that a fuller story could be told. Although much of the book’s content concerned the First Age of Middle-earth, there were at its close two key works that revealed the tumultuous events concerning the rise and fall of the island of Númenor. Raised out of the Great Sea and gifted to the Men of Middle-earth as a reward for aiding the angelic Valar and the Elves in the defeat and capture of the Dark Lord Morgoth, the kingdom became a seat of influence and wealth; but as the Númenóreans’ power increased, the seed of their downfall would inevitably be sown, culminating in the Last Alliance of Elves and Men.",
+    "image": "/images/The fall.jpg",
+    "category": "fiction",
+    "price": 11,
+    "stock": 24
+  },
+  {
+    "title": "The Grapes of Wrath",
+    "author": "John Steinbeck",
+    "description": "Shocking and controversial when it was first published, The Grapes of Wrath is Steinbeck's Pultizer Prize-winning epic of the Joad family, forced to travel west from Dust Bowl era Oklahoma in search of the promised land of California. Their story is one of false hopes, thwarted desires and powerlessness, yet out of their struggle Steinbeck created a drama that is both intensely human and majestic in its scale and moral vision.",
+    "image": "/images/The fall.jpg",
+    "category": "fiction",
+    "price": 8,
+    "stock": 13
+  },
+  {
+    "title": "Don Quixote",
+    "author": "Miguel de Cervantes Saavedra",
+    "description": "Widely regarded as the world's first modern novel, and one of the funniest and most tragic books ever written, Don Quixote chronicles the famous picaresque adventures of the noble knight-errant Don Quixote de La Mancha and his faithful squire, Sancho Panza, as they travel through sixteenth-century Spain.",
+    "image": "/images/Don.jpg",
+    "category": "fiction",
+    "price": 24,
+    "stock": 11
+  }
+]
