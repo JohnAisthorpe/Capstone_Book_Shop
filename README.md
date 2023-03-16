@@ -22,13 +22,18 @@ cd Capstone_Book_Shop
 2. Install the required packages in both the root and client directories:
 
 npm install
+
 cd client
+
 npm install
+
 cd ..
 
 3. Create a `.env` file in the root directory with your MongoDB connection string:
 
 MONGODB_URI=your_mongodb_connection_string_here
+
+PORT = 4999
 
 ### Running the Application
 
