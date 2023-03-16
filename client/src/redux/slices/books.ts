@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
-interface BooksState {
+export interface BooksState {
   loading: boolean;
   error: null | Error;
   books: any[];
@@ -33,5 +34,4 @@ const booksSlice = createSlice({
 
 export const { setLoading, setBooks, setError } = booksSlice.actions;
 export default booksSlice.reducer;
-export type RootState = ReturnType<typeof booksSlice.reducer>;
-export const booksSelector = (state: RootState) => state.books;
+export const booksSelector = (state: RootState): BooksState => state.books;

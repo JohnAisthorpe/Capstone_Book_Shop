@@ -34,7 +34,7 @@ export const books = [
   },
   {
     _id: 4,
-    title: "The Mirror & The Light - The Wolf Hall Trilogy'",
+    title: "The Mirror & The Light - The Wolf Hall Trilogy",
     author: "Hilary Mantel",
     description: `England, May 1536. Anne Boleyn is dead, decapitated in the space of a heartbeat by a hired French executioner. As her remains are bundled into oblivion, Thomas Cromwell breakfasts with the victors. The blacksmith's son from Putney emerges from the spring's bloodbath to continue his climb to power and wealth, while his formidable master, Henry VIII, settles to short-lived happiness with his third queen, Jane Seymour.
 

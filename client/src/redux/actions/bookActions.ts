@@ -5,7 +5,7 @@ import { setBooks, setError, setLoading } from "../slices/books";
 export const getBooks = () => async (dispatch: Dispatch) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios.get("https://localhost:3000/api/books");
+    const { data } = await axios.get("/api/books");
     dispatch(setBooks(data));
   } catch (error: any) {
     dispatch(
