@@ -18,6 +18,8 @@ const BasketOrderSummary = () => {
   const basketItems = useSelector((state: any) => state.basket);
   const { subtotal } = basketItems;
   const navigate = useNavigate();
+  console.log(subtotal);
+  console.log(basketItems);
 
   const checkoutHandler = () => {
     setButtonLoading(true);
@@ -32,7 +34,7 @@ const BasketOrderSummary = () => {
           <Text fontWeight="medium" color={mode("blue.600", "blue.400")}>
             Subtotal
           </Text>
-          <Text fontWeight="medium">{subtotal}</Text>
+          <Text fontWeight="medium">£ {subtotal}</Text>
         </Flex>
         <Flex justify="space-between">
           <Text fontWeight="medium" color={mode("blue.600", "blue.400")}>
@@ -48,10 +50,16 @@ const BasketOrderSummary = () => {
             )}
           </Text>
         </Flex>
-        <Flex fontSize="large" fontWeight="semibold">
-          {subtotal <= 50
-            ? Number(subtotal) + Number(standardShipping)
-            : subtotal}
+        <Flex justify="space-between">
+          <Text fontSize="xl" fontWeight="extrabold">
+            Total
+          </Text>
+          <Text fontSize="xl" fontWeight="extrabold">
+            £
+            {subtotal <= 50
+              ? Number(Number(subtotal) + Number(standardShipping)).toFixed(2)
+              : subtotal}
+          </Text>
         </Flex>
       </Stack>
       <Button
@@ -62,7 +70,7 @@ const BasketOrderSummary = () => {
         fontSize="medium"
         rightIcon={<FaArrowRight />}
         isLoading={buttonLoading}
-        onClick={() => checkoutHandler()}
+        onClick={() => checkoutHandler}
       >
         Checkout
       </Button>

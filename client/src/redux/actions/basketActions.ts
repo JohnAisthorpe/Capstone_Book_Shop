@@ -11,10 +11,12 @@ export const addBasketItem =
       const bookToAdd = {
         id: data._id,
         title: data.title,
+        author: data.author,
+        description: data.description,
         image: data.image,
+        category: data.category,
         price: data.price,
         stock: data.stock,
-        author: data.author,
         qty,
       };
 

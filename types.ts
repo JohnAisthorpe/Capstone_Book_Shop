@@ -1,5 +1,5 @@
 export interface Book {
-  _id: number;
+  _id: any;
   title: string;
   author: string;
   description: string;
@@ -7,5 +7,5 @@ export interface Book {
   category: string;
   price: number;
   stock: number;
-  qty?: number;
+  qty?: string;
 }

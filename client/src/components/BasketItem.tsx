@@ -48,6 +48,7 @@ const BasketItem = ({ basketItem }: BasketItemProps) => {
         mt={{ base: "4", md: "0" }}
         align={{ base: "center", md: "baseline" }}
         justify="space-between"
+        display="flex"
       >
         <Select
           maxW="64px"
@@ -57,7 +58,7 @@ const BasketItem = ({ basketItem }: BasketItemProps) => {
             dispatch(addBasketItem(_id, e.target.value) as any);
           }}
         >
-          {Array.from(Array(stock).keys()).map((x) => (
+          {[...Array(stock).keys()].map((x) => (
             <option key={x + 1} value={x + 1}>
               {x + 1}
             </option>

@@ -32,7 +32,7 @@ const BasketScreen = () => {
       {loading ? (
         <Stack direction="row" spacing={4}>
           <Spinner
-            mt={20}
+            mt="10"
             thickness="10px"
             speed="0.65"
             emptyColor="gray.200"
@@ -65,7 +65,7 @@ const BasketScreen = () => {
         >
           <Stack
             direction={{ base: "column", lg: "row" }}
-            align={{ lg: "flex" }}
+            align={{ lg: "flex-start" }}
             spacing={{ base: "8", md: "16" }}
           >
             <Stack spacing={{ base: "8", md: "10" }} flex="2">
@@ -82,7 +82,7 @@ const BasketScreen = () => {
             <Flex direction="column" align="center" flex="1">
               <BasketOrderSummary />
 
-              <HStack mt="6" fontWeight="semibold">
+              <HStack mt={6} fontWeight="semibold">
                 <p>or</p>
                 <Link
                   as={ReactLink}
