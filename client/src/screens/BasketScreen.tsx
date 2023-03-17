@@ -14,15 +14,15 @@ import {
   Wrap,
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
-import { BooksState, booksSelector } from "../redux/slices/books";
+// import { BooksState, booksSelector } from "../redux/slices/books";
 import { useSelector } from "react-redux";
 
-const bookList: BooksState = useSelector(booksSelector);
-// const { loading, error, books } = bookList;
-const basketInfo = useSelector((state: any) => state.basket);
-const { loading, error, basket } = basketInfo;
-
 const BasketScreen = () => {
+  // const bookList: BooksState = useSelector(booksSelector);
+  // const { loading, error, books } = bookList;
+  const basketInfo = useSelector((state: any) => state.basket);
+  const { loading, error, basket } = basketInfo;
+
   return (
     <Wrap spacing="30px" justify="center" minHeight="100vh">
       {loading ? (

@@ -15,7 +15,6 @@ import {
 } from "@chakra-ui/react";
 
 import { Link as ReactLink } from "react-router-dom";
-import { useState } from "react";
 import { Book } from "../../../types";
 
 interface BookCardProps {
