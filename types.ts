@@ -7,4 +7,5 @@ export interface Book {
   category: string;
   price: number;
   stock: number;
+  qty?: number;
 }

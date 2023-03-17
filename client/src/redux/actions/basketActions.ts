@@ -3,17 +3,18 @@ import { Dispatch } from "@reduxjs/toolkit";
 import { setLoading, setError, basketItemAdd } from "../slices/basket";
 
 export const addBasketItem =
-  (id: number, qty: number) => async (dispatch: Dispatch) => {
+  (id: number, qty: number | string) => async (dispatch: Dispatch) => {
     dispatch(setLoading(true));
     try {
       const { data } = await axios.get(`/api/books/${id}`);
 
       const bookToAdd = {
         id: data._id,
-        name: data.name,
+        title: data.title,
         image: data.image,
         price: data.price,
         stock: data.stock,
+        author: data.author,
         qty,
       };
 
