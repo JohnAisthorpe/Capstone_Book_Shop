@@ -18,8 +18,6 @@ const BasketOrderSummary = () => {
   const basketItems = useSelector((state: any) => state.basket);
   const { subtotal } = basketItems;
   const navigate = useNavigate();
-  console.log(subtotal);
-  console.log(basketItems);
 
   const checkoutHandler = () => {
     setButtonLoading(true);
