@@ -31,7 +31,7 @@ const BasketItem = ({ basketItem }: BasketItemProps) => {
       <Stack direction="row" spacing="5" width="full">
         <Image
           w="120px"
-          h="120px"
+          h="180px"
           fit="cover"
           src={image}
           alt={title}
