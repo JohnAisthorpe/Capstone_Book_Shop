@@ -20,7 +20,7 @@ export const getBooks = () => async (dispatch: Dispatch) => {
   }
 };
 
-export const getBook = (id: number) => async (dispatch: Dispatch) => {
+export const getBook = (id: any) => async (dispatch: Dispatch) => {
   dispatch(setLoading(true));
   try {
     const { data } = await axios.get(`/api/books/${id}`);

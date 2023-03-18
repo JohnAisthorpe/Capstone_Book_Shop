@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import BooksScreen from "./screens/BooksScreen";
 import BasketScreen from "./screens/BasketScreen";
+import BookScreen from "./screens/BookScreen";
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
         <main>
           <Routes>
             <Route path="/books" element={<BooksScreen />} />
+            <Route path="/book/:id" element={<BookScreen />} />
             <Route path="/basket" element={<BasketScreen />} />
           </Routes>
         </main>
