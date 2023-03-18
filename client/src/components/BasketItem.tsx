@@ -11,6 +11,7 @@ import {
 import { useDispatch } from "react-redux";
 import { addBasketItem } from "../redux/actions/basketActions";
 import { Book } from "../../../types";
+import { basketItemRemoval } from "../redux/slices/basket";
 
 interface BasketItemProps {
   basketItem: Book;
@@ -65,7 +66,11 @@ const BasketItem = ({ basketItem }: BasketItemProps) => {
           ))}
         </Select>
         <Text fontWeight="bold">£{price}</Text>
-        <CloseButton />
+        <CloseButton
+          onClick={() => {
+            dispatch(basketItemRemoval(_id));
+          }}
+        />
       </Flex>
     </Flex>
   );

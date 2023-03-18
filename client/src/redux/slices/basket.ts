@@ -42,7 +42,7 @@ export const basketSlice = createSlice({
     },
     basketItemAdd: (state, action: PayloadAction<any>) => {
       const existingItem = state.basket.find(
-        (book) => book._id === action.payload.id
+        (book) => book._id === action.payload._id
       );
 
       if (existingItem) {
@@ -61,9 +61,17 @@ export const basketSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
+    basketItemRemoval: (state, action: PayloadAction<number>) => {
+      state.basket = state.basket.filter((item) => item._id !== action.payload);
+      updateLocalStorage(state.basket);
+      state.subtotal = Number(calculateSubtotal(state.basket));
+      state.loading = false;
+      state.error = null;
+    },
   },
 });
 
-export const { setLoading, basketItemAdd, setError } = basketSlice.actions;
+export const { setLoading, basketItemAdd, setError, basketItemRemoval } =
+  basketSlice.actions;
 export default basketSlice.reducer;
 export const booksSelector = (state: RootState): BooksState => state.basket;
