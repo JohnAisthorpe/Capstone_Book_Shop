@@ -19,5 +19,16 @@ const getBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const books = yield Book_1.default.find({});
     res.json(books);
 });
+const getBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const book = yield Book_1.default.findById(req.params.id);
+    if (book) {
+        res.json(book);
+    }
+    else {
+        res.status(404);
+        throw new Error("Book not found");
+    }
+});
 bookRoutes.route("/").get(getBooks);
+bookRoutes.route("/:id").get(getBook);
 exports.default = bookRoutes;

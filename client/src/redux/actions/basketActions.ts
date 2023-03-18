@@ -1,17 +1,25 @@
 import axios from "axios";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setLoading, setError, basketItemAdd } from "../slices/basket";
+import {
+  setLoading,
+  setError,
+  basketItemAdd,
+  basketItemRemoval,
+} from "../slices/basket";
 
 export const addBasketItem =
-  (id: number, qty: number) => async (dispatch: Dispatch) => {
+  (id: number, qty: number | string) => async (dispatch: Dispatch) => {
     dispatch(setLoading(true));
     try {
       const { data } = await axios.get(`/api/books/${id}`);
 
       const bookToAdd = {
-        id: data._id,
-        name: data.name,
+        _id: data._id,
+        title: data.title,
+        author: data.author,
+        description: data.description,
         image: data.image,
+        category: data.category,
         price: data.price,
         stock: data.stock,
         qty,
@@ -30,3 +38,8 @@ export const addBasketItem =
       );
     }
   };
+
+export const removeBasketItem = (id: number) => async (dispatch: Dispatch) => {
+  dispatch(setLoading(true));
+  dispatch(basketItemRemoval(id));
+};
