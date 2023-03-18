@@ -21,9 +21,9 @@ const initialState: BooksState = {
   loading: false,
   error: null,
   basket: JSON.parse(localStorage.getItem("basketItems") ?? "[]"),
-  subtotal: localStorage.getItem("cartItems")
+  subtotal: localStorage.getItem("basketItems")
     ? Number(
-        calculateSubtotal(JSON.parse(localStorage.getItem("cartItems") ?? ""))
+        calculateSubtotal(JSON.parse(localStorage.getItem("basketItems") ?? ""))
       )
     : 0,
 };
