@@ -15,7 +15,7 @@ app.use(express.json());
 const port = process.env.PORT || 4999;
 // if we hit this route then we go to the book route.
 app.use("/api/books", bookRoutes);
-app.use("/api/users", userRoutesga);
+app.use("/api/users", userRoutes);
 
 // app.get("/", (req, res) => res.send("YO"));
 
