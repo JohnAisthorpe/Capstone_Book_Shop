@@ -36,8 +36,8 @@ const LoginScreen = () => {
   const boxBR = useBreakpointValue({ base: "transparesnt", md: "bg-surface" });
   //   const loading = useSelector((state: any) => state.user.loading);
   //   const error = useSelector((state: any) => state.user.error);
-  const userInfo: UserState = useSelector((state: any) => state.user);
-  const { loading, error } = userInfo;
+  const user: UserState = useSelector((state: any) => state.user);
+  const { loading, error, userInfo } = user;
 
   return (
     <Formik

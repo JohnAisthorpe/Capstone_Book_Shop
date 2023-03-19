@@ -1,6 +1,5 @@
 import axios from "axios";
-import { setLoading } from "../slices/books";
-import { userLogin, setError } from "../slices/user";
+import { userLogin, setError, setLoading } from "../slices/user";
 import { Dispatch, AnyAction } from "redux";
 export const login =
   (email: string, password: string) =>
@@ -13,7 +12,7 @@ export const login =
         },
       };
       const { data } = await axios.post(
-        "/api/users.login",
+        "/api/users/login",
         { email, password },
         config
       );
