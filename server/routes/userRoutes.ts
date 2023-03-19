@@ -16,6 +16,7 @@ const genToken = (id: number) => {
 
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+
   const user: IUser | null = await User.findOne({ email });
 
   if (user && (await user.matchPasswords(password))) {
