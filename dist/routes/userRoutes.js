@@ -12,13 +12,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
 const User_1 = __importDefault(require("../models/User"));
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const express_1 = __importDefault(require("express"));
 dotenv_1.default.config();
 const userRoutes = express_1.default.Router();
+//Just a test to get all users
+const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const books = yield User_1.default.find({});
+    res.json(books);
+});
+//just a test to get a usuer by id
+const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield User_1.default.findById(req.params.id);
+    if (user) {
+        res.json(user);
+    }
+    else {
+        res.status(404);
+        throw new Error("User not found");
+    }
+});
 //TODO: redefine expiresIn
 const genToken = (id) => {
     // we are using the ! operator to tell TypeScript that we are sure that the TOKEN_SECRET environment variable exists and is not undefined.
@@ -71,4 +87,6 @@ const registerUser = (0, express_async_handler_1.default)((req, res) => __awaite
 }));
 userRoutes.route("/login").post(loginUser);
 userRoutes.route("/register").post(registerUser);
+userRoutes.route("/").get(getUsers); //test route to get all users
+userRoutes.route("/:id").get(getUser); // test route to get a user by id
 exports.default = userRoutes;

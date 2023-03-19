@@ -1,12 +1,31 @@
-import express from "express";
 import User from "../models/User";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { IUser } from "../models/User";
+import express, { Request, Response } from "express";
+
 dotenv.config();
 
 const userRoutes = express.Router();
+//Just a test to get all users
+const getUsers = async (
+  req: Request,
+  res: Response<IUser[]>
+): Promise<void> => {
+  const books: IUser[] = await User.find({});
+  res.json(books);
+};
+//just a test to get a usuer by id
+const getUser = async (req: Request, res: Response) => {
+  const user = await User.findById(req.params.id);
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+};
 
 //TODO: redefine expiresIn
 const genToken = (id: number) => {
@@ -65,5 +84,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 userRoutes.route("/login").post(loginUser);
 userRoutes.route("/register").post(registerUser);
+userRoutes.route("/").get(getUsers); //test route to get all users
+userRoutes.route("/:id").get(getUser); // test route to get a user by id
 
 export default userRoutes;

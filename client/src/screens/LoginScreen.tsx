@@ -23,11 +23,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link as ReactLink, useLocation } from "react-router-dom";
 import TextField from "../components/TextField";
 import PasswordTextField from "../components/PasswordTextField";
+import { login } from "../redux/actions/userActions";
+import { UserState, userSelector } from "../redux/slices/user";
 
 const LoginScreen = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const redirect = "/books";
+  const toast = useToast();
   const headingBR = useBreakpointValue({ base: "xs", md: "sm" });
   const boxBR = useBreakpointValue({ base: "transparesnt", md: "bg-surface" });
-  const dispatch = useDispatch();
+  //   const loading = useSelector((state: any) => state.user.loading);
+  //   const error = useSelector((state: any) => state.user.error);
+  const userInfo: UserState = useSelector((state: any) => state.user);
+  const { loading, error } = userInfo;
+
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -40,7 +51,7 @@ const LoginScreen = () => {
           .required("Password is required."),
       })}
       onSubmit={(values) => {
-        dispatch(login(values.email, values.password));
+        dispatch(login(values.email, values.password) as any);
       }}
     >
       {(formik) => (
@@ -73,37 +84,54 @@ const LoginScreen = () => {
               bg={{ boxBR }}
               boxShadow={{ base: "none", md: "xl" }}
             >
-              <Stack spacing="6" as="form" onSubmit={formik.handleSubmit}>
-                {error && (
-                  <Alert
-                    status="error"
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    textAlign="center"
-                  >
-                    <AlertIcon />
-                    <AlertTitle>Oops!</AlertTitle>
-                    <AlertDescription>{error}</AlertDescription>
-                  </Alert>
-                )}
-                <Stack spacing="5">
-                  <FormControl>
-                    <TextField
-                      type="text"
-                      name="email"
-                      placeholder="john@example.com"
-                      label="email"
-                    />
-                    <PasswordTextField
-                      type="password"
-                      name="password"
-                      placeholder="your password"
-                      label="Password"
-                    />
-                  </FormControl>
+              <form onSubmit={formik.handleSubmit}>
+                <Stack spacing="6">
+                  {error && (
+                    <Alert
+                      status="error"
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                      textAlign="center"
+                    >
+                      <AlertIcon />
+                      <AlertTitle>Oops!</AlertTitle>
+                      {/* The AlertDescription component expects a ReactNode as
+                      its child, but error is of type Error, which is not
+                      compatible with ReactNode.Convert the Error object to a
+                      string before passing it to AlertDescription */}
+                      <AlertDescription>{error.toString()}</AlertDescription>
+                    </Alert>
+                  )}
+                  <Stack spacing="5">
+                    <FormControl>
+                      <TextField
+                        type="text"
+                        name="email"
+                        placeholder="john@example.com"
+                        label="email"
+                      />
+                      <PasswordTextField
+                        type="password"
+                        name="password"
+                        placeholder="your password"
+                        label="Password"
+                      />
+                    </FormControl>
+                  </Stack>
                 </Stack>
-              </Stack>
+                <Stack spacing="6">
+                  <Button
+                    colorScheme="blue"
+                    size="lg"
+                    fontSize="md"
+                    isLoading={loading}
+                    type="submit"
+                  >
+                    Sign in
+                  </Button>
+                </Stack>
+              </form>
             </Box>
           </Stack>
         </Container>

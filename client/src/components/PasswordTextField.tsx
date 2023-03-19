@@ -3,8 +3,7 @@ import {
   FormErrorMessage,
   FormLabel,
 } from "@chakra-ui/form-control";
-import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
-import { Button } from "@chakra-ui/react";
+import { Input, InputGroup, InputRightElement, Button } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Field, useField } from "formik";
 import { useState } from "react";
