@@ -34,10 +34,24 @@ const LoginScreen = () => {
   const toast = useToast();
   const headingBR = useBreakpointValue({ base: "xs", md: "sm" });
   const boxBR = useBreakpointValue({ base: "transparesnt", md: "bg-surface" });
-  //   const loading = useSelector((state: any) => state.user.loading);
-  //   const error = useSelector((state: any) => state.user.error);
-  const user: UserState = useSelector((state: any) => state.user);
+
+  const user: UserState = useSelector(userSelector);
   const { loading, error, userInfo } = user;
+
+  useEffect(() => {
+    if (userInfo) {
+      if (location.state?.from) {
+        navigate(location.state.from);
+      } else {
+        navigate(redirect);
+      }
+      toast({
+        description: "Login successful",
+        status: "success",
+        isClosable: true,
+      });
+    }
+  }, [userInfo]);
 
   return (
     <Formik

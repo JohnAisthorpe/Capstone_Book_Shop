@@ -1,5 +1,5 @@
 import axios from "axios";
-import { userLogin, setError, setLoading } from "../slices/user";
+import { userLogin, setError, setLoading, userLogout } from "../slices/user";
 import { Dispatch, AnyAction } from "redux";
 export const login =
   (email: string, password: string) =>
@@ -30,3 +30,7 @@ export const login =
       );
     }
   };
+export const logout = () => (dispatch: Dispatch<AnyAction>) => {
+  localStorage.removeItem("userInfo");
+  dispatch(userLogout());
+};
