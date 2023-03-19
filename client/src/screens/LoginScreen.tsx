@@ -21,6 +21,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link as ReactLink, useLocation } from "react-router-dom";
+import TextField from "../components/TextField";
+import PasswordTextField from "../components/PasswordTextField";
 
 const LoginScreen = () => {
   const headingBR = useBreakpointValue({ base: "xs", md: "sm" });
@@ -86,7 +88,20 @@ const LoginScreen = () => {
                   </Alert>
                 )}
                 <Stack spacing="5">
-                  <FormControl></FormControl>
+                  <FormControl>
+                    <TextField
+                      type="text"
+                      name="email"
+                      placeholder="john@example.com"
+                      label="email"
+                    />
+                    <PasswordTextField
+                      type="password"
+                      name="password"
+                      placeholder="your password"
+                      label="Password"
+                    />
+                  </FormControl>
                 </Stack>
               </Stack>
             </Box>
