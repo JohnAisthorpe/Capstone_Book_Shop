@@ -41,7 +41,7 @@ userScheme.methods.matchPasswords = function (enteredPassword) {
 userScheme.pre("save", function (next) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!this.isModified("password")) {
-            next;
+            next();
         }
         const salt = yield bcryptjs_1.default.genSalt(10);
         this.password = yield bcryptjs_1.default.hash(this.password, salt);

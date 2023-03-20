@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { IUser } from "../models/User";
 import express, { Request, Response } from "express";
+import protectedRoute from "../middleware/authMiddleware";
 
 dotenv.config();
 
@@ -82,8 +83,32 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
+const updateUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+    const updatedUser = await user.save();
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      token: genToken(updatedUser._id),
+      createdAt: updatedUser.createdAt,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found.");
+  }
+});
+
 userRoutes.route("/login").post(loginUser);
 userRoutes.route("/register").post(registerUser);
+userRoutes.route("/profile/:id").put(protectedRoute, updateUserProfile);
 userRoutes.route("/").get(getUsers); //test route to get all users
 userRoutes.route("/:id").get(getUser); // test route to get a user by id
 

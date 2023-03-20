@@ -6,6 +6,7 @@ export interface IUser extends Document {
   email: string;
   password: string;
   isAdmin: boolean;
+  createdAt?: Date;
   matchPasswords(enteredPassword: string): Promise<boolean>;
 }
 
@@ -40,7 +41,7 @@ userScheme.methods.matchPasswords = async function (
 
 userScheme.pre("save", async function (next) {
   if (!this.isModified("password")) {
-    next;
+    next();
   }
 
   const salt = await bcrypt.genSalt(10);

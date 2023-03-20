@@ -17,6 +17,7 @@ const express_async_handler_1 = __importDefault(require("express-async-handler")
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
+const authMiddleware_1 = __importDefault(require("../middleware/authMiddleware"));
 dotenv_1.default.config();
 const userRoutes = express_1.default.Router();
 //Just a test to get all users
@@ -85,8 +86,32 @@ const registerUser = (0, express_async_handler_1.default)((req, res) => __awaite
         throw new Error("Invalid user data.");
     }
 }));
+const updateUserProfile = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield User_1.default.findById(req.params.id);
+    if (user) {
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        if (req.body.password) {
+            user.password = req.body.password;
+        }
+        const updatedUser = yield user.save();
+        res.json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin,
+            token: genToken(updatedUser._id),
+            createdAt: updatedUser.createdAt,
+        });
+    }
+    else {
+        res.status(404);
+        throw new Error("User not found.");
+    }
+}));
 userRoutes.route("/login").post(loginUser);
 userRoutes.route("/register").post(registerUser);
+userRoutes.route("/profile/:id").put(authMiddleware_1.default, updateUserProfile);
 userRoutes.route("/").get(getUsers); //test route to get all users
 userRoutes.route("/:id").get(getUser); // test route to get a user by id
 exports.default = userRoutes;
