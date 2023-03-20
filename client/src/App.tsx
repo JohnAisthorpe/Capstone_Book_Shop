@@ -5,6 +5,7 @@ import BooksScreen from "./screens/BooksScreen";
 import BasketScreen from "./screens/BasketScreen";
 import BookScreen from "./screens/BookScreen";
 import LoginScreen from "./screens/LoginScreen";
+import RegistrationScreen from "./screens/RegistrationScreen";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
             <Route path="/book/:id" element={<BookScreen />} />
             <Route path="/basket" element={<BasketScreen />} />
             <Route path="/login" element={<LoginScreen />} />
+            <Route path="/registration" element={<RegistrationScreen />} />
           </Routes>
         </main>
       </Router>

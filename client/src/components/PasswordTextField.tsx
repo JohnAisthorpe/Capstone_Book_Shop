@@ -30,7 +30,7 @@ const PasswordTextField = ({
         <Field
           as={Input}
           {...field}
-          type={type}
+          type={showPassword ? "text" : type}
           name={name}
           palceholder={placeholder}
         />
