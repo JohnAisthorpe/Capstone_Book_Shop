@@ -93,12 +93,9 @@ const ProfileScreen = () => {
           <Stack
             direction={{ base: "column", lg: "row" }}
             align={{ lg: "flex-start" }}
+            spacing="10"
           >
-            <Stack
-              pr={{ base: "0", md: "10" }}
-              flex="1.5"
-              mb={{ base: "2xl", md: "none" }}
-            >
+            <Stack flex="1.5" mb={{ base: "2xl", md: "none" }}>
               <Heading fontSize="2xl" fontWeight="extrabold">
                 Profile
               </Heading>
@@ -154,9 +151,11 @@ const ProfileScreen = () => {
                   <Stack spacing="6">
                     <Button
                       colorScheme="blue"
-                      size="large"
+                      size="lg"
                       isLoading={loading}
                       type="submit"
+                      width="25%"
+                      alignSelf="center"
                     >
                       Save
                     </Button>

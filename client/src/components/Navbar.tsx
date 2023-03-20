@@ -30,14 +30,28 @@ import {
 import { CgProfile } from "react-icons/cg";
 import { MdLocalShipping, MdLogout } from "react-icons/md";
 import { GiBookCover } from "react-icons/gi";
-import { ReactNode } from "react";
+import { FiShoppingCart } from "react-icons/fi";
 import { userSelector } from "../redux/slices/user";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/userActions";
 
+const ShoppingBasketIcon = () => {
+  const basketInfo = useSelector((state: any) => state.basket);
+  const { basket } = basketInfo;
+  return (
+    <Flex>
+      <Text as="sub" fontSize="xs">
+        {basket.length}
+      </Text>
+      <Icon as={FiShoppingCart} h="4" w="7" alignSelf="center" />
+      Basket
+    </Flex>
+  );
+};
+
 const links = [
   { linkName: "Books", path: "/books" },
-  { linkName: "Basket", path: "/basket" },
+  { linkName: <ShoppingBasketIcon />, path: "/basket" },
 ];
 const NavLink: React.FC<{
   path: string;
@@ -95,7 +109,7 @@ const Navbar: React.FC = () => {
 
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
-              <NavLink key={link.linkName} path={link.path}>
+              <NavLink key={link.path} path={link.path}>
                 {link.linkName}
               </NavLink>
             ))}
@@ -164,7 +178,7 @@ const Navbar: React.FC = () => {
         <Box pb={4} display={{ md: "none" }}>
           <Stack as="nav" spacing={4}>
             {links.map((link) => (
-              <NavLink key={link.linkName} path={link.path}>
+              <NavLink key={link.path} path={link.path}>
                 {link.linkName}
               </NavLink>
             ))}
