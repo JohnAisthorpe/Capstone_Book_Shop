@@ -12,6 +12,7 @@ export interface UserState {
   loading: boolean;
   error: Error | null; // Change the type to Error | null
   userInfo: IUser | null;
+  updateSuccess: boolean;
 }
 const userInfoFromLocalStorage = localStorage.getItem("userInfo");
 const userInfo =
@@ -23,6 +24,7 @@ const initialState: UserState = {
   loading: false,
   error: null,
   userInfo: userInfo,
+  updateSuccess: false,
 };
 const userSlice = createSlice({
   name: "user",
@@ -45,10 +47,25 @@ const userSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
+    updateUserProfile: (state, { payload }) => {
+      state.userInfo = payload;
+      state.updateSuccess = true;
+      state.loading = false;
+      state.error = null;
+    },
+    resetUpdate: (state) => {
+      state.updateSuccess = false;
+    },
   },
 });
 
-export const { setLoading, setError, userLogin, userLogout } =
-  userSlice.actions;
+export const {
+  setLoading,
+  setError,
+  userLogin,
+  userLogout,
+  updateUserProfile,
+  resetUpdate,
+} = userSlice.actions;
 export default userSlice.reducer;
 export const userSelector = (state: RootState): UserState => state.user;
