@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { IUser } from "../models/User";
 import express, { Request, Response } from "express";
-import protectedRoute from "../middleware/authMiddleware";
+import protectedRoute from "../authenticateMiddleware/authMiddleware";
 
 dotenv.config();
 
@@ -46,6 +46,7 @@ const loginUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       token: genToken(user._id),
+      createdAt: user.createdAt,
     });
   } else {
     //not authenticated

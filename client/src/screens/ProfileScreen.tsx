@@ -74,7 +74,7 @@ const ProfileScreen = () => {
         dispatch(resetUpdateSuccess() as any);
         dispatch(
           updateProfile(
-            userInfo._id,
+            userInfo._id!,
             values.name,
             values.email,
             values.password

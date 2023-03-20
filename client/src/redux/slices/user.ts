@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 interface IUser extends Document {
+  _id?: string;
   name: string;
   email: string;
   password: string;
   isAdmin: boolean;
+  createdAt?: any;
 }
 
 export interface UserState {
