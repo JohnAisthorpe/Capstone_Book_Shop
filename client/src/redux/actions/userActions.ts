@@ -40,7 +40,6 @@ export const login =
 export const logout = () => (dispatch: Dispatch<AnyAction>) => {
   localStorage.removeItem("userInfo");
   dispatch(userLogout());
-  dispatch(resetUpdate());
 };
 
 export const register =

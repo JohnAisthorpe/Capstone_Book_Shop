@@ -46,6 +46,7 @@ const ProfileScreen = () => {
         status: "success",
         isClosable: true,
       });
+      dispatch(resetUpdateSuccess() as any);
     }
   }, [updateSuccess, toast]);
 
@@ -71,7 +72,6 @@ const ProfileScreen = () => {
           .oneOf([Yup.ref("password"), ""], "Passwords must match"),
       })}
       onSubmit={(values) => {
-        dispatch(resetUpdateSuccess() as any);
         dispatch(
           updateProfile(
             userInfo._id!,
