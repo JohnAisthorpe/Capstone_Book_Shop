@@ -9,6 +9,8 @@ import {
 } from "../slices/user";
 import { Dispatch, AnyAction } from "redux";
 import { removeAllBasketItems } from "./basketActions";
+
+
 export const login =
   (email: string, password: string) =>
   async (dispatch: Dispatch<AnyAction>) => {
@@ -40,9 +42,11 @@ export const login =
     }
   };
 export const logout = () => (dispatch: Dispatch<AnyAction>) => {
+  
   localStorage.removeItem("userInfo");
   dispatch(removeAllBasketItems() as any);
   dispatch(userLogout());
+ 
 };
 
 export const register =

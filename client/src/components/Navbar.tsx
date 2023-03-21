@@ -19,7 +19,7 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
-import { Link as ReactLink } from "react-router-dom";
+import { Link as ReactLink, useNavigate } from "react-router-dom";
 import {
   HamburgerIcon,
   CloseIcon,
@@ -72,13 +72,14 @@ const NavLink: React.FC<{
   </Link>
 );
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const user = useSelector(userSelector);
   const { userInfo } = user;
   const dispatch = useDispatch();
   const toast = useToast();
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     dispatch(logout() as any);
@@ -87,6 +88,7 @@ const Navbar: React.FC = () => {
       status: "success",
       isClosable: true,
     });
+    navigate("/books");
   };
 
   return (
