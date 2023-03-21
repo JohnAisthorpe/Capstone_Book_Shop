@@ -12,7 +12,7 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 
-import { searchBooks, resetSearch } from "../redux/slices/books";
+import { searchBooks, resetSearch, filterBooks } from "../redux/slices/books";
 import { useDispatch } from "react-redux";
 
 type searchInputProps = {};
@@ -29,6 +29,10 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
 
   const resetHandler = () => {
     dispatch(resetSearch());
+  };
+
+  const filterHandler = (filter: string) => {
+    dispatch(filterBooks(filter));
   };
 
   return (
@@ -62,6 +66,14 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
             />
             <Button mx="10px" width="90px" height="34px" onClick={resetHandler}>
               Show All
+            </Button>
+            <Button
+              mx="10px"
+              width="90px"
+              height="34px"
+              onClick={() => filterHandler("Fiction")}
+            >
+              Fiction
             </Button>
           </InputGroup>
         </Stack>

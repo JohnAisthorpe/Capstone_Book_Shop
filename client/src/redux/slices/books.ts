@@ -54,6 +54,11 @@ const booksSlice = createSlice({
     resetSearch: (state) => {
       state.books = state.originalBooks;
     },
+    filterBooks: (state, action: PayloadAction<string>) => {
+      state.books = state.originalBooks.filter(
+        (book) => book.category.toLowerCase() === action.payload.toLowerCase()
+      );
+    },
   },
 });
 
@@ -64,6 +69,7 @@ export const {
   setBook,
   searchBooks,
   resetSearch,
+  filterBooks,
 } = booksSlice.actions;
 export default booksSlice.reducer;
 export const booksSelector = (state: RootState): BooksState => state.books;
