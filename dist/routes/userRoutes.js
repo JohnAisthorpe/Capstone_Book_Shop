@@ -17,7 +17,7 @@ const express_async_handler_1 = __importDefault(require("express-async-handler")
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const express_1 = __importDefault(require("express"));
-const authMiddleware_1 = __importDefault(require("../authenticateMiddleware/authMiddleware"));
+const authMiddleware_1 = __importDefault(require("../middleware/authMiddleware"));
 dotenv_1.default.config();
 const userRoutes = express_1.default.Router();
 //Just a test to get all users

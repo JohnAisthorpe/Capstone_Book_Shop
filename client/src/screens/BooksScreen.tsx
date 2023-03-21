@@ -1,25 +1,23 @@
 import {
-  Center,
-  Wrap,
-  WrapItem,
-  Stack,
-  Spinner,
   Alert,
   AlertDescription,
   AlertIcon,
   AlertTitle,
   Button,
-  Box,
-  Flex,
+  Center,
+  Spinner,
+  Stack,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BookCard from "../components/BookCard";
 import SearchBar from "../components/SearchBar";
 import { getBooks } from "../redux/actions/bookActions";
 import {
-  BooksState,
   booksSelector,
+  BooksState,
   filterBooks,
   resetSearch,
 } from "../redux/slices/books";

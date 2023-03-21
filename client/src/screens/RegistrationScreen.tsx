@@ -1,4 +1,8 @@
 import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
   Box,
   Button,
   Container,
@@ -8,23 +12,17 @@ import {
   Stack,
   Text,
   useBreakpointValue,
-  useColorModeValue as mode,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
   useToast,
 } from "@chakra-ui/react";
-import TextField from "../components/TextField";
-import PasswordTextField from "../components/PasswordTextField";
-import { useEffect, useState } from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, Link as ReactLink } from "react-router-dom";
-import { UserState, userSelector } from "../redux/slices/user";
+import { Link as ReactLink, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import PasswordTextField from "../components/PasswordTextField";
+import TextField from "../components/TextField";
 import { register } from "../redux/actions/userActions";
-// import { register } from "../redux/actions/userActions";
+import { userSelector, UserState } from "../redux/slices/user";
 
 const RegistrationScreen = () => {
   const dispatch = useDispatch();

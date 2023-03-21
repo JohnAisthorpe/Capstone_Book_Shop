@@ -1,30 +1,28 @@
-import { useParams } from "react-router-dom";
 import {
-  Box,
-  Image,
-  Text,
-  Wrap,
-  Stack,
-  Spinner,
   Alert,
-  AlertIcon,
   AlertDescription,
+  AlertIcon,
   AlertTitle,
-  Flex,
   Badge,
-  Heading,
-  HStack,
+  Box,
   Button,
-  SimpleGrid,
+  Flex,
+  Heading,
+  Image,
+  Spinner,
+  Stack,
+  Text,
   useToast,
+  Wrap,
 } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
 
-import { MinusIcon, StarIcon, SmallAddIcon } from "@chakra-ui/icons";
-import { BiPackage, BiCheckShield, BiSupport } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
-import { getBook } from "../redux/actions/bookActions";
-import { addBasketItem } from "../redux/actions/basketActions";
+import { MinusIcon, SmallAddIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
+import { BiPackage, BiSupport } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { addBasketItem } from "../redux/actions/basketActions";
+import { getBook } from "../redux/actions/bookActions";
 
 const BookScreen = () => {
   const [amount, setAmount] = useState(1);

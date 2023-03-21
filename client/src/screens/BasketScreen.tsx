@@ -15,15 +15,12 @@ import {
   flexbox,
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
-// import { BooksState, booksSelector } from "../redux/slices/books";
 import { useSelector } from "react-redux";
 import BasketItem from "../components/BasketItem";
 import { Book } from "../../../types";
 import BasketOrderSummary from "../components/BasketOrderSummary";
 
 const BasketScreen = () => {
-  // const bookList: BooksState = useSelector(booksSelector);
-  // const { loading, error, books } = bookList;
   const basketInfo = useSelector((state: any) => state.basket);
   const { loading, error, basket } = basketInfo;
 

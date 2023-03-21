@@ -1,30 +1,22 @@
 import {
-  Button,
-  Container,
-  Heading,
-  Box,
-  Checkbox,
-  FormControl,
-  HStack,
-  Stack,
-  Text,
-  useBreakpointValue,
-  useColorModeValue as mode,
   Alert,
   AlertDescription,
   AlertIcon,
-  AlertTitle,
-  useToast,
+  AlertTitle, Box, Button,
+  Container, FormControl, Heading, HStack,
+  Stack,
+  Text,
+  useBreakpointValue, useToast
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
 import { Formik } from "formik";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link as ReactLink, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, Link as ReactLink, useLocation } from "react-router-dom";
-import TextField from "../components/TextField";
 import PasswordTextField from "../components/PasswordTextField";
+import TextField from "../components/TextField";
 import { login } from "../redux/actions/userActions";
-import { UserState, userSelector } from "../redux/slices/user";
+import { userSelector, UserState } from "../redux/slices/user";
 
 const LoginScreen = () => {
   const navigate = useNavigate();

@@ -1,15 +1,13 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import BooksScreen from "./screens/BooksScreen";
 import BasketScreen from "./screens/BasketScreen";
 import BookScreen from "./screens/BookScreen";
+import BooksScreen from "./screens/BooksScreen";
 
-import SearchBar from "./components/SearchBar";
 import LoginScreen from "./screens/LoginScreen";
-import RegistrationScreen from "./screens/RegistrationScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-
+import RegistrationScreen from "./screens/RegistrationScreen";
 
 const App: React.FC = () => {
   return (

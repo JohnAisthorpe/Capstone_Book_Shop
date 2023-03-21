@@ -1,23 +1,18 @@
 import {
-  Flex,
-  Circle,
-  Box,
-  Image,
   Badge,
-  useColorModeValue,
-  Icon,
+  Box,
   Button,
-  Tooltip,
-  Stack,
+  Flex,
+  Image,
   Link,
-  HStack,
-  Text,
+  Stack,
+  useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
 
+import { useDispatch, useSelector } from "react-redux";
 import { Link as ReactLink } from "react-router-dom";
 import { Book } from "../../../types";
-import { useDispatch, useSelector } from "react-redux";
 import { addBasketItem } from "../redux/actions/basketActions";
 
 interface BookCardProps {

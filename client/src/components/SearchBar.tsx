@@ -1,20 +1,15 @@
-import { FlatTree } from "framer-motion";
+import { SearchIcon } from "@chakra-ui/icons";
 import {
-  Box,
-  Button,
   Flex,
   Input,
   InputGroup,
   InputLeftElement,
-  InputRightElement,
   Stack,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 
-import { searchBooks, resetSearch, filterBooks } from "../redux/slices/books";
 import { useDispatch } from "react-redux";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
+import { searchBooks } from "../redux/slices/books";
 
 type searchInputProps = {};
 
