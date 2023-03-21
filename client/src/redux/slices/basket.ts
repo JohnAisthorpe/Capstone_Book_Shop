@@ -68,10 +68,20 @@ export const basketSlice = createSlice({
       state.loading = false;
       state.error = null;
     },
+    clearBasket: (state) => {
+      state.basket = [];
+      state.loading = false;
+      state.error = null;
+    },
   },
 });
 
-export const { setLoading, basketItemAdd, setError, basketItemRemoval } =
-  basketSlice.actions;
+export const {
+  setLoading,
+  basketItemAdd,
+  setError,
+  basketItemRemoval,
+  clearBasket,
+} = basketSlice.actions;
 export default basketSlice.reducer;
 export const booksSelector = (state: RootState): BasketState => state.basket;

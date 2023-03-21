@@ -8,6 +8,9 @@ import {
   resetUpdate,
 } from "../slices/user";
 import { Dispatch, AnyAction } from "redux";
+import { removeAllBasketItems } from "./basketActions";
+
+
 export const login =
   (email: string, password: string) =>
   async (dispatch: Dispatch<AnyAction>) => {
@@ -25,6 +28,7 @@ export const login =
       );
       dispatch(userLogin(data));
       localStorage.setItem("userInfo", JSON.stringify(data));
+      dispatch(removeAllBasketItems() as any);
     } catch (error: any) {
       dispatch(
         setError(
@@ -38,8 +42,11 @@ export const login =
     }
   };
 export const logout = () => (dispatch: Dispatch<AnyAction>) => {
+  
   localStorage.removeItem("userInfo");
+  dispatch(removeAllBasketItems() as any);
   dispatch(userLogout());
+ 
 };
 
 export const register =
