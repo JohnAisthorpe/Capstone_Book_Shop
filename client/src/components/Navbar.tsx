@@ -27,13 +27,6 @@ import {
   CloseIcon,
   MoonIcon,
   SunIcon,
-
-  Search2Icon,
-} from "@chakra-ui/icons";
-import { GiBookCover } from "react-icons/gi";
-import { ReactNode } from "react";
-import SearchBar from "./SearchBar";
-
   ChevronDownIcon,
 } from "@chakra-ui/icons";
 import { CgProfile } from "react-icons/cg";
@@ -57,7 +50,6 @@ const ShoppingBasketIcon = () => {
     </Flex>
   );
 };
-
 
 const links = [
   { linkName: "Books", path: "/books" },
