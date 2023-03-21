@@ -8,13 +8,16 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  Button,
+  Box,
+  Flex,
 } from "@chakra-ui/react";
 import { ReactNode, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BookCard from "../components/BookCard";
 import SearchBar from "../components/SearchBar";
 import { getBooks } from "../redux/actions/bookActions";
-import { BooksState, booksSelector } from "../redux/slices/books";
+import { BooksState, booksSelector, filterBooks } from "../redux/slices/books";
 
 const BooksScreen = () => {
   const dispatch = useDispatch();
@@ -29,6 +32,40 @@ const BooksScreen = () => {
   return (
     <>
       <SearchBar />
+      <Flex py="15px" justifyContent="center">
+        <Button
+          mx="10px"
+          width="90px"
+          height="34px"
+          onClick={() => dispatch(filterBooks("Fiction"))}
+        >
+          Fiction
+        </Button>
+        <Button
+          mx="10px"
+          width="90px"
+          height="34px"
+          onClick={() => dispatch(filterBooks("Non-Fiction"))}
+        >
+          Non-Fiction
+        </Button>
+        <Button
+          mx="10px"
+          width="90px"
+          height="34px"
+          onClick={() => dispatch(filterBooks("Self-Help"))}
+        >
+          Self-Help
+        </Button>
+        <Button
+          mx="10px"
+          width="90px"
+          height="34px"
+          onClick={() => dispatch(filterBooks("Psychology"))}
+        >
+          Psychology
+        </Button>
+      </Flex>
       <Wrap spacing="30px" justify="center" minHeight="100vh">
         {loading ? (
           <Stack direction="row" spacing={4}>

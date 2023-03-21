@@ -55,6 +55,7 @@ const booksSlice = createSlice({
       state.books = state.originalBooks;
     },
     filterBooks: (state, action: PayloadAction<string>) => {
+      console.log(action);
       state.books = state.originalBooks.filter(
         (book) => book.category.toLowerCase() === action.payload.toLowerCase()
       );

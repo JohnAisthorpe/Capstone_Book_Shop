@@ -14,6 +14,7 @@ import React, { useState } from "react";
 
 import { searchBooks, resetSearch, filterBooks } from "../redux/slices/books";
 import { useDispatch } from "react-redux";
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 type searchInputProps = {};
 
@@ -21,24 +22,21 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState<string>("");
 
-  const submitHandler = (e: any) => {
-    e.preventDefault();
-    console.log(searchValue);
-    dispatch(searchBooks(searchValue));
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+    console.log("event.t.v", e.target.value);
+    setSearchValue(e.target.value);
+    dispatch(searchBooks(e.target.value));
   };
 
   const resetHandler = () => {
     dispatch(resetSearch());
   };
 
-  const filterHandler = (filter: string) => {
-    dispatch(filterBooks(filter));
-  };
-
   return (
     <Flex flexGrow={1} mr={2} justifyContent="center">
       <Stack pt="20px">
-        <Stack as="form" onSubmit={submitHandler}>
+        <Stack as="form" onSubmit={(e) => e.preventDefault()}>
           <InputGroup>
             <InputLeftElement
               pointerEvents="none"
@@ -46,7 +44,7 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
             />
             <Input
               value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
+              onChange={changeHandler}
               fontSize="10pt"
               _placeholder={{ color: "gray.500" }}
               _hover={{
@@ -67,14 +65,6 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
             <Button mx="10px" width="90px" height="34px" onClick={resetHandler}>
               Show All
             </Button>
-            <Button
-              mx="10px"
-              width="90px"
-              height="34px"
-              onClick={() => filterHandler("Fiction")}
-            >
-              Fiction
-            </Button>
           </InputGroup>
         </Stack>
       </Stack>
@@ -83,6 +73,3 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
 };
 
 export default SearchBar;
-function dispatch(arg0: any) {
-  throw new Error("Function not implemented.");
-}
