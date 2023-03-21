@@ -32,7 +32,7 @@ const PasswordTextField = ({
           {...field}
           type={showPassword ? "text" : type}
           name={name}
-          palceholder={placeholder}
+          placeholder={placeholder}
         />
         <InputRightElement h="full">
           <Button
