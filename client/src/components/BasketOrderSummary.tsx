@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import { Link as ReactLink, useNavigate } from "react-router-dom";
 
 const BasketOrderSummary = () => {
-  const [buttonLoading, setButtonLoading] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState<boolean>(false);
   const standardShipping = Number(2.99).toFixed(2);
   const basketItems = useSelector((state: any) => state.basket);
   const { subtotal } = basketItems;
