@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { IUser } from "../models/User";
 import express, { Request, Response } from "express";
-import protectedRoute from "../authenticateMiddleware/authMiddleware";
+import protectedRoute from "../middleware/authMiddleware";
 
 dotenv.config();
 

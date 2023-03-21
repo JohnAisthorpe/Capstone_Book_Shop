@@ -29,7 +29,6 @@ import {
 import { useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { userSelector } from "../redux/slices/user";
-import { IUser } from "../../../server/models/User";
 import { useEffect } from "react";
 
 const ProfileScreen = () => {
@@ -48,8 +47,11 @@ const ProfileScreen = () => {
       });
       dispatch(resetUpdateSuccess() as any);
     }
-  }, [updateSuccess, toast]);
-
+  }, [updateSuccess, toast, dispatch]);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("Hello");
+  };
+  // if the user is authenticated
   return userInfo ? (
     <Formik
       initialValues={{
@@ -69,9 +71,11 @@ const ProfileScreen = () => {
         confirmPassword: Yup.string()
           .min(2, "Password is too short - must contain at least 2 characters.")
           .required("Password is required.")
-          .oneOf([Yup.ref("password"), ""], "Passwords must match"),
+          .nullable()
+          .oneOf([Yup.ref("password"), null], "Passwords must match"),
       })}
       onSubmit={(values) => {
+        dispatch(resetUpdateSuccess() as any);
         dispatch(
           updateProfile(
             userInfo._id!,
@@ -101,7 +105,7 @@ const ProfileScreen = () => {
               </Heading>
               <Stack spacing="6">
                 <Stack spacing="6">
-                  // might need to change the order of Stack and form
+                  {/* {// might need to change the order of Stack and form*/}
                   <form onSubmit={formik.handleSubmit}>
                     {error && (
                       <Alert
@@ -147,19 +151,21 @@ const ProfileScreen = () => {
                         label="Confirm your password"
                       />
                     </FormControl>
+
+                    <Stack spacing="6">
+                      <Button
+                        colorScheme="blue"
+                        size="lg"
+                        isLoading={loading}
+                        type="submit"
+                        // width="25%"
+                        alignSelf="center"
+                        onClick={handleClick}
+                      >
+                        Save
+                      </Button>
+                    </Stack>
                   </form>
-                  <Stack spacing="6">
-                    <Button
-                      colorScheme="blue"
-                      size="lg"
-                      isLoading={loading}
-                      type="submit"
-                      width="25%"
-                      alignSelf="center"
-                    >
-                      Save
-                    </Button>
-                  </Stack>
                 </Stack>
               </Stack>
             </Stack>
