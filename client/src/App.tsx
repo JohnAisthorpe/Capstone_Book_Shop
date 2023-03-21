@@ -4,12 +4,14 @@ import Navbar from "./components/Navbar";
 import BooksScreen from "./screens/BooksScreen";
 import BasketScreen from "./screens/BasketScreen";
 import BookScreen from "./screens/BookScreen";
+import SearchBar from "./components/SearchBar";
 
 const App: React.FC = () => {
   return (
     <ChakraProvider>
       <Router>
         <Navbar />
+
         <main>
           <Routes>
             <Route path="/books" element={<BooksScreen />} />

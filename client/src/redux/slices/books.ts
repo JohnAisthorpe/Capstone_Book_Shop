@@ -7,6 +7,7 @@ export interface BooksState {
   error: null | Error;
   books: Book[];
   book: Book | null;
+  originalBooks: Book[];
 }
 
 const initialState: BooksState = {
@@ -14,6 +15,7 @@ const initialState: BooksState = {
   error: null,
   books: [],
   book: null,
+  originalBooks: [],
 };
 
 const booksSlice = createSlice({
@@ -27,6 +29,7 @@ const booksSlice = createSlice({
       state.loading = false;
       state.error = null;
       state.books = action.payload;
+      state.originalBooks = action.payload;
     },
     setBook: (state, action: PayloadAction<Book>) => {
       state.loading = false;
@@ -37,9 +40,30 @@ const booksSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
+    searchBooks: (state, action: PayloadAction<string>) => {
+      state.loading = true;
+      state.error = null;
+      const searchTerm = action.payload.toLowerCase();
+      state.books = state.originalBooks.filter(
+        (book) =>
+          book.title.toLowerCase().includes(searchTerm) ||
+          book.author.toLowerCase().includes(searchTerm)
+      );
+      state.loading = false;
+    },
+    resetSearch: (state) => {
+      state.books = state.originalBooks;
+    },
   },
 });
 
-export const { setLoading, setBooks, setError, setBook } = booksSlice.actions;
+export const {
+  setLoading,
+  setBooks,
+  setError,
+  setBook,
+  searchBooks,
+  resetSearch,
+} = booksSlice.actions;
 export default booksSlice.reducer;
 export const booksSelector = (state: RootState): BooksState => state.books;

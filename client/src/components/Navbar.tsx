@@ -14,9 +14,16 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
-import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  HamburgerIcon,
+  CloseIcon,
+  MoonIcon,
+  SunIcon,
+  Search2Icon,
+} from "@chakra-ui/icons";
 import { GiBookCover } from "react-icons/gi";
 import { ReactNode } from "react";
+import SearchBar from "./SearchBar";
 
 const links = [
   { linkName: "Books", path: "/books" },
