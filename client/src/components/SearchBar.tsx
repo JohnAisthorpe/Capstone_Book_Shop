@@ -24,31 +24,30 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
-    console.log("event.t.v", e.target.value);
     setSearchValue(e.target.value);
     dispatch(searchBooks(e.target.value));
-  };
-
-  const resetHandler = () => {
-    dispatch(resetSearch());
   };
 
   return (
     <Flex flexGrow={1} mr={2} justifyContent="center">
       <Stack pt="20px">
         <Stack as="form" onSubmit={(e) => e.preventDefault()}>
-          <InputGroup>
+          <InputGroup alignItems="center">
             <InputLeftElement
+              paddingLeft="50px"
+              marginTop="10px"
+              marginBottom="auto"
               pointerEvents="none"
-              children={<SearchIcon color="gray.300" />}
+              children={<SearchIcon color="gray.300" width={8} height={8} />}
             />
             <Input
               value={searchValue}
+              borderRadius="50px"
               onChange={changeHandler}
-              fontSize="10pt"
+              fontSize="18pt"
+              paddingLeft="125px"
               _placeholder={{ color: "gray.500" }}
               _hover={{
-                bg: "blue.700",
                 border: "1px solid",
                 borderColor: "blue.500",
               }}
@@ -58,13 +57,10 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
                 borderColor: "blue.500",
               }}
               placeholder="Search for Title or Author"
-              width="400px"
-              height="34px"
+              width="520px"
+              height="60px"
               // bg="gray.50"
             />
-            <Button mx="10px" width="90px" height="34px" onClick={resetHandler}>
-              Show All
-            </Button>
           </InputGroup>
         </Stack>
       </Stack>

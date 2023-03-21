@@ -17,7 +17,12 @@ import { useDispatch, useSelector } from "react-redux";
 import BookCard from "../components/BookCard";
 import SearchBar from "../components/SearchBar";
 import { getBooks } from "../redux/actions/bookActions";
-import { BooksState, booksSelector, filterBooks } from "../redux/slices/books";
+import {
+  BooksState,
+  booksSelector,
+  filterBooks,
+  resetSearch,
+} from "../redux/slices/books";
 
 const BooksScreen = () => {
   const dispatch = useDispatch();
@@ -29,44 +34,58 @@ const BooksScreen = () => {
     dispatch(getBooks() as any);
   }, [dispatch]);
 
+  const filterButtons = [
+    { id: 1, label: "Show All", onClick: () => dispatch(resetSearch()) },
+    {
+      id: 2,
+      label: "Fiction",
+      onClick: () => dispatch(filterBooks("Fiction")),
+    },
+    {
+      id: 3,
+      label: "Non-Fiction",
+      onClick: () => dispatch(filterBooks("Non-Fiction")),
+    },
+    {
+      id: 4,
+      label: "Self-Help",
+      onClick: () => dispatch(filterBooks("Self-Help")),
+    },
+    {
+      id: 5,
+      label: "Psychology",
+      onClick: () => dispatch(filterBooks("Psychology")),
+    },
+  ];
+
   return (
     <>
       <SearchBar />
-      <Flex py="15px" justifyContent="center">
-        <Button
-          mx="10px"
-          width="90px"
-          height="34px"
-          onClick={() => dispatch(filterBooks("Fiction"))}
-        >
-          Fiction
-        </Button>
-        <Button
-          mx="10px"
-          width="90px"
-          height="34px"
-          onClick={() => dispatch(filterBooks("Non-Fiction"))}
-        >
-          Non-Fiction
-        </Button>
-        <Button
-          mx="10px"
-          width="90px"
-          height="34px"
-          onClick={() => dispatch(filterBooks("Self-Help"))}
-        >
-          Self-Help
-        </Button>
-        <Button
-          mx="10px"
-          width="90px"
-          height="34px"
-          onClick={() => dispatch(filterBooks("Psychology"))}
-        >
-          Psychology
-        </Button>
-      </Flex>
-      <Wrap spacing="30px" justify="center" minHeight="100vh">
+      <Wrap
+        spacing="1px"
+        justify="center"
+        py="10px"
+        justifyContent="center"
+        flexDirection={{ base: "column", md: "row" }}
+        alignItems="center"
+        margin={{ base: "10px 0", md: "0 10px" }}
+      >
+        {filterButtons.map((button, index) => (
+          <Stack key={button.id}>
+            <Button
+              key={index}
+              my="5px"
+              mx="5px"
+              width="90px"
+              height="34px"
+              onClick={button.onClick}
+            >
+              {button.label}
+            </Button>
+          </Stack>
+        ))}
+      </Wrap>
+      <Wrap spacing="60px" justify="center" minHeight="100vh" margin="5">
         {loading ? (
           <Stack direction="row" spacing={4}>
             <Spinner
@@ -87,7 +106,7 @@ const BooksScreen = () => {
         ) : (
           books.map((book) => (
             <WrapItem key={book._id}>
-              <Center w="250px" h="550">
+              <Center w="150px" h="400">
                 <BookCard book={book} />
               </Center>
             </WrapItem>

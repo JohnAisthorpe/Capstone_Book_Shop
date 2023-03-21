@@ -57,8 +57,15 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
       h="450px"
       rounded="lg"
       position="relative"
+      transform="scale(0.8)"
     >
-      <Image src={book.image} alt={book.title} />
+      <Image
+        src={book.image}
+        alt={book.title}
+        w="100%"
+        h="100%"
+        objectFit="cover"
+      />
       <Box flex="1" maxH="5" alignItems="baseline">
         {book.stock <= 0 && (
           <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
@@ -77,8 +84,11 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
             textColor: "blue.200",
           }}
         >
-          <Box fontSize="2xl" fontWeight="bold" as="h4" lineHeight="tight">
+          <Box fontSize="28" fontWeight="bold" as="h4" lineHeight="tight">
             {book.title}
+          </Box>
+          <Box fontSize="20" fontWeight="md" as="h4" lineHeight="tight">
+            {book.author}
           </Box>
         </Link>
       </Flex>
@@ -90,7 +100,9 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
           {book.price.toFixed(2)}
         </Box>
         <Button
-          variant="ghost"
+          fontSize="18"
+          bg=""
+          backgroundColor={useColorModeValue("gray.100", "gray.700")}
           isDisabled={book.stock <= 0}
           onClick={() => addBook(book._id)}
         >
