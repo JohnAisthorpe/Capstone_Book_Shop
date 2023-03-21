@@ -20,7 +20,7 @@ const BooksScreen = () => {
   const dispatch = useDispatch();
 
   const bookList: BooksState = useSelector(booksSelector);
-  const { loading, error, books } = bookList;
+  const { loading, error, books, originalBooks } = bookList;
 
   useEffect(() => {
     dispatch(getBooks() as any);

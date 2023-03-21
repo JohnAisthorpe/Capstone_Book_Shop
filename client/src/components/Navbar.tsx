@@ -36,10 +36,13 @@ import { FiShoppingCart } from "react-icons/fi";
 import { userSelector } from "../redux/slices/user";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/userActions";
-
+import { resetSearch } from "../redux/slices/books";
 const ShoppingBasketIcon = () => {
   const basketInfo = useSelector((state: any) => state.basket);
   const { basket } = basketInfo;
+
+  const dispatch = useDispatch();
+
   return (
     <Flex>
       <Text as="sub" fontSize="xs">
@@ -58,7 +61,8 @@ const links = [
 const NavLink: React.FC<{
   path: string;
   children?: React.ReactNode;
-}> = ({ path, children }) => (
+  handleClick?: () => void;
+}> = ({ path, children, handleClick }) => (
   <Link
     as={ReactLink}
     to={path}
@@ -69,6 +73,7 @@ const NavLink: React.FC<{
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.600"),
     }}
+    onClick={handleClick}
   >
     {children}
   </Link>
@@ -113,7 +118,11 @@ const Navbar = () => {
 
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
-              <NavLink key={link.path} path={link.path}>
+              <NavLink
+                key={link.path}
+                path={link.path}
+                handleClick={() => dispatch(resetSearch())}
+              >
                 {link.linkName}
               </NavLink>
             ))}
@@ -182,7 +191,11 @@ const Navbar = () => {
         <Box pb={4} display={{ md: "none" }}>
           <Stack as="nav" spacing={4}>
             {links.map((link) => (
-              <NavLink key={link.path} path={link.path}>
+              <NavLink
+                key={link.path}
+                path={link.path}
+                handleClick={() => dispatch(resetSearch())}
+              >
                 {link.linkName}
               </NavLink>
             ))}
