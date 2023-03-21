@@ -34,7 +34,7 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
   return (
     <Flex flexGrow={1} mr={2} justifyContent="center">
       <Stack pt="20px">
-        <form onSubmit={submitHandler}>
+        <Stack as="form" onSubmit={submitHandler}>
           <InputGroup>
             <InputLeftElement
               pointerEvents="none"
@@ -64,7 +64,7 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
               Show All
             </Button>
           </InputGroup>
-        </form>
+        </Stack>
       </Stack>
     </Flex>
   );
