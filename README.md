@@ -36,6 +36,8 @@ MONGO_URI=your_mongodb_connection_string_here
 
 PORT = 4999
 
+TOKEN_SECRET = my_secret
+
 ### Running the Application
 
 To run the application, simply execute the following command in the root directory:
