@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { Book } from "../../../../types";
 
-export interface BooksState {
+export interface BasketState {
   loading: boolean;
   error: null | Error;
   basket: Book[];
@@ -17,7 +17,7 @@ const calculateSubtotal = (basketState: Book[]) => {
   return result.toFixed(2);
 };
 
-const initialState: BooksState = {
+const initialState: BasketState = {
   loading: false,
   error: null,
   basket: JSON.parse(localStorage.getItem("basketItems") ?? "[]"),
@@ -68,10 +68,20 @@ export const basketSlice = createSlice({
       state.loading = false;
       state.error = null;
     },
+    clearBasket: (state) => {
+      state.basket = [];
+      state.loading = false;
+      state.error = null;
+    },
   },
 });
 
-export const { setLoading, basketItemAdd, setError, basketItemRemoval } =
-  basketSlice.actions;
+export const {
+  setLoading,
+  basketItemAdd,
+  setError,
+  basketItemRemoval,
+  clearBasket,
+} = basketSlice.actions;
 export default basketSlice.reducer;
-export const booksSelector = (state: RootState): BooksState => state.basket;
+export const booksSelector = (state: RootState): BasketState => state.basket;

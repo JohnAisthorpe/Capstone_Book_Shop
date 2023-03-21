@@ -1,10 +1,11 @@
 import axios from "axios";
-import { Dispatch } from "@reduxjs/toolkit";
+import { Dispatch, AnyAction } from "@reduxjs/toolkit";
 import {
   setLoading,
   setError,
   basketItemAdd,
   basketItemRemoval,
+  clearBasket,
 } from "../slices/basket";
 
 export const addBasketItem =
@@ -42,4 +43,8 @@ export const addBasketItem =
 export const removeBasketItem = (id: number) => async (dispatch: Dispatch) => {
   dispatch(setLoading(true));
   dispatch(basketItemRemoval(id));
+};
+
+export const removeAllBasketItems = () => (dispatch: Dispatch<AnyAction>) => {
+  dispatch(clearBasket());
 };
