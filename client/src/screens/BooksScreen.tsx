@@ -80,9 +80,9 @@ const BooksScreen = () => {
               key={index}
               my="5px"
               mx="5px"
-              width="90px"
               height="34px"
               onClick={button.onClick}
+              px="10px" // Add padding on both sides of the text
             >
               {button.label}
             </Button>
