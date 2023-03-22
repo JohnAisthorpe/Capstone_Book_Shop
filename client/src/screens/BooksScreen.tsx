@@ -39,6 +39,7 @@ const BooksScreen = () => {
       label: "Fiction",
       onClick: () => dispatch(filterBooks("Fiction")),
     },
+
     {
       id: 3,
       label: "Non-Fiction",
@@ -53,6 +54,11 @@ const BooksScreen = () => {
       id: 5,
       label: "Psychology",
       onClick: () => dispatch(filterBooks("Psychology")),
+    },
+    {
+      id: 6,
+      label: "History",
+      onClick: () => dispatch(filterBooks("History")),
     },
   ];
 
