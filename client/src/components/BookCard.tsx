@@ -52,7 +52,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
       h="450px"
       rounded="lg"
       position="relative"
-      transform="scale(0.8)"
+      transform="scale(0.6)"
     >
       <Image
         src={book.image}
@@ -68,7 +68,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
           </Badge>
         )}
       </Box>
-      <Flex mt="1" justifyContent="space-between" alignContent="center">
+      <Flex mt="1" justifyContent="center">
         <Link
           as={ReactLink}
           to={`/book/${book._id}`}
@@ -78,6 +78,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
             textDecoration: "none",
             textColor: "blue.200",
           }}
+          textAlign="center"
         >
           <Box fontSize="28" fontWeight="bold" as="h4" lineHeight="tight">
             {book.title}
@@ -87,7 +88,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
           </Box>
         </Link>
       </Flex>
-      <Flex justify="space-between">
+      <Flex justify="space-between" flexDirection="column" alignItems="center">
         <Box fontSize="2xl" color={useColorModeValue("gray.800", "white")}>
           <Box as="span" color={"gray.500"} fontSize="lg">
             £
