@@ -89,9 +89,9 @@ const BooksScreen = () => {
           </Stack>
         ))}
       </Wrap>
-      <Wrap spacing="60px" justify="center" minHeight="100vh" margin="5">
+      <Wrap spacing="30px" justify="center" minHeight="100vh" margin="7">
         {loading ? (
-          <Stack direction="row" spacing={4}>
+          <Stack direction="row" spacing={3}>
             <Spinner
               mt={20}
               thickness="10px"
@@ -110,7 +110,7 @@ const BooksScreen = () => {
         ) : (
           books.map((book) => (
             <WrapItem key={book._id}>
-              <Center w="150px" h="400">
+              <Center w="150px" h="330">
                 <BookCard book={book} />
               </Center>
             </WrapItem>
