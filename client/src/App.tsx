@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <Router>
         <Navbar />
 
-        <main>
+        <main style={{ paddingTop: "4rem" }}>
           <Routes>
             <Route path="/books" element={<BooksScreen />} />
             <Route path="/book/:id" element={<BookScreen />} />

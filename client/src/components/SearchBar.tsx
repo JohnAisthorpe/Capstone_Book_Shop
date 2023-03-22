@@ -29,18 +29,24 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
         <Stack as="form" onSubmit={(e) => e.preventDefault()}>
           <InputGroup alignItems="center">
             <InputLeftElement
-              paddingLeft="50px"
-              marginTop="10px"
+              paddingLeft={{ base: "10px", md: "50px" }}
+              marginTop={{ base: "0px", md: "10px" }}
               marginBottom="auto"
               pointerEvents="none"
-              children={<SearchIcon color="gray.300" width={8} height={8} />}
+              children={
+                <SearchIcon
+                  color="gray.300"
+                  width={{ base: 4, md: 8 }}
+                  height={{ base: 4, md: 8 }}
+                />
+              }
             />
             <Input
               value={searchValue}
               borderRadius="50px"
               onChange={changeHandler}
               fontSize={{ base: "14pt", md: "18pt" }}
-              paddingLeft="125px"
+              paddingLeft={{ base: "40px", md: "125px" }}
               _placeholder={{ color: "gray.500" }}
               _hover={{
                 border: "1px solid",
@@ -52,7 +58,7 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
                 borderColor: "blue.500",
               }}
               placeholder="Search for Title or Author"
-              width={{ base: "100%", md: "520px" }}
+              width={{ base: "300px", md: "520px" }}
               height={{ base: "35", md: "60px" }}
               // bg="gray.50"
             />
