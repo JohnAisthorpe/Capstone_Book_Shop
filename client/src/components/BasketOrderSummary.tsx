@@ -11,6 +11,7 @@ import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link as ReactLink, useNavigate } from "react-router-dom";
+import { userSelector, UserState } from "../redux/slices/user";
 
 const BasketOrderSummary = () => {
   const [buttonLoading, setButtonLoading] = useState<boolean>(false);
@@ -18,8 +19,13 @@ const BasketOrderSummary = () => {
   const basketItems = useSelector((state: any) => state.basket);
   const { subtotal } = basketItems;
   const navigate = useNavigate();
+  const user: UserState = useSelector(userSelector);
+  const { userInfo } = user;
 
   const checkoutHandler = () => {
+    if (!userInfo) {
+      return;
+    }
     setButtonLoading(true);
     navigate("/checkout");
   };
@@ -60,18 +66,31 @@ const BasketOrderSummary = () => {
           </Text>
         </Flex>
       </Stack>
-      <Button
-        as={ReactLink}
-        to="/checkout"
-        colorScheme="orange"
-        size="lg"
-        fontSize="medium"
-        rightIcon={<FaArrowRight />}
-        isLoading={buttonLoading}
-        onClick={() => checkoutHandler}
-      >
-        Checkout
-      </Button>
+      {userInfo ? (
+        <Button
+          as={ReactLink}
+          to="/checkout"
+          colorScheme="orange"
+          size="lg"
+          fontSize="medium"
+          rightIcon={<FaArrowRight />}
+          isLoading={buttonLoading}
+          onClick={checkoutHandler}
+        >
+          Checkout
+        </Button>
+      ) : (
+        <Button
+          isDisabled
+          colorScheme="orange"
+          size="lg"
+          fontSize="medium"
+          rightIcon={<FaArrowRight />}
+          isLoading={buttonLoading}
+        >
+          Checkout
+        </Button>
+      )}
     </Stack>
   );
 };

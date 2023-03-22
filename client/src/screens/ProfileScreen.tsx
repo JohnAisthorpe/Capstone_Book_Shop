@@ -144,12 +144,6 @@ const ProfileScreen = () => {
                         placeholder="your password"
                         label="Password"
                       />
-                      <PasswordTextField
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm your password"
-                        label="Confirm your password"
-                      />
                     </FormControl>
 
                     <Stack spacing="6">

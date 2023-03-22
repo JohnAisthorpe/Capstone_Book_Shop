@@ -38,16 +38,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/userActions";
 import { resetSearch } from "../redux/slices/books";
 import { useEffect, useState } from "react";
+import { Book } from "../../../types";
 const ShoppingBasketIcon = () => {
   const basketInfo = useSelector((state: any) => state.basket);
   const { basket } = basketInfo;
 
   const dispatch = useDispatch();
 
+  // Calculate the total count based on the quantity of each item in the basket
+  const totalCount = basket.reduce(
+    (count: number, item: Book) => count + item.qty!,
+    0
+  );
+
   return (
     <Flex>
       <Text as="sub" fontSize="xs">
-        {basket.length}
+        {totalCount}
       </Text>
       <Icon as={FiShoppingCart} h="4" w="7" alignSelf="center" />
       Basket

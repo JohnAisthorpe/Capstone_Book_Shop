@@ -56,7 +56,7 @@ const BasketItem = ({ basketItem }: BasketItemProps) => {
           focusBorderColor={mode("blue.500", "blue.200")}
           value={qty}
           onChange={(e) => {
-            dispatch(addBasketItem(_id, e.target.value) as any);
+            dispatch(addBasketItem(_id, parseInt(e.target.value)) as any);
           }}
         >
           {[...Array(stock).keys()].map((x) => (
