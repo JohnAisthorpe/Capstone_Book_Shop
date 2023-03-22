@@ -39,7 +39,7 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
               value={searchValue}
               borderRadius="50px"
               onChange={changeHandler}
-              fontSize="18pt"
+              fontSize={{ base: "14pt", md: "18pt" }}
               paddingLeft="125px"
               _placeholder={{ color: "gray.500" }}
               _hover={{
@@ -52,8 +52,8 @@ const SearchBar: React.FC<searchInputProps> = ({}) => {
                 borderColor: "blue.500",
               }}
               placeholder="Search for Title or Author"
-              width="520px"
-              height="60px"
+              width={{ base: "100%", md: "520px" }}
+              height={{ base: "35", md: "60px" }}
               // bg="gray.50"
             />
           </InputGroup>
