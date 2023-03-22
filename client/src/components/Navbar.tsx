@@ -37,6 +37,7 @@ import { userSelector } from "../redux/slices/user";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/userActions";
 import { resetSearch } from "../redux/slices/books";
+import { useEffect, useState } from "react";
 const ShoppingBasketIcon = () => {
   const basketInfo = useSelector((state: any) => state.basket);
   const { basket } = basketInfo;
@@ -98,8 +99,39 @@ const Navbar = () => {
     navigate("/books");
   };
 
+  const [showNavbar, setShowNavbar] = useState(true);
+
+  useEffect(() => {
+    let prevScrollPos = window.pageYOffset;
+    const threshold = 100;
+
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const show =
+        prevScrollPos > currentScrollPos || currentScrollPos <= threshold;
+      setShowNavbar(show);
+      prevScrollPos = currentScrollPos;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+    <Box
+      bg={useColorModeValue("gray.100", "gray.900")}
+      px={4}
+      position="fixed"
+      top="0"
+      left="0"
+      right="0"
+      zIndex="1"
+      transform={showNavbar ? "translateY(0)" : "translateY(-100%)"}
+      transition="transform 0.3s ease-in-out"
+    >
       <Flex h={16} alignItems="center" justifyContent="space-between">
         <IconButton
           aria-label="menuOpen-Close"
