@@ -26,6 +26,7 @@ import { getBook } from "../redux/actions/bookActions";
 
 const BookScreen = () => {
   const [amount, setAmount] = useState(1);
+  const [readMore, setReadMore] = useState(false);
   let { id } = useParams();
   const toast = useToast();
 
@@ -111,7 +112,20 @@ const BookScreen = () => {
                     <Box>
                       <Text fontSize="xl">£{book.price}</Text>
                     </Box>
-                    <Text>{book.description}</Text>
+                    <Text>
+                      {readMore
+                        ? book.description
+                        : `${book.description.substring(0, 250)}...`}
+                      <Text
+                        color="blue.500"
+                        _hover={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setReadMore(!readMore);
+                        }}
+                      >
+                        {readMore ? `show less` : `read more`}
+                      </Text>
+                    </Text>
                     <Text fontWeight="bold">Quantity</Text>
                     <Flex
                       w="170px"
