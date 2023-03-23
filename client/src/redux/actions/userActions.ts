@@ -9,6 +9,7 @@ import {
 } from "../slices/user";
 import { Dispatch, AnyAction } from "redux";
 import { removeAllBasketItems } from "./basketActions";
+import { ThunkAction } from "@reduxjs/toolkit";
 
 export const login =
   (email: string, password: string) =>
