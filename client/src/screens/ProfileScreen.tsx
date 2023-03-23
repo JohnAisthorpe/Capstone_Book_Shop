@@ -65,25 +65,29 @@ const ProfileScreen = () => {
         email: Yup.string()
           .email("Invalid email.")
           .required("Email address is required."),
-        password: Yup.string()
-          .min(2, "Password is too short - must contain at least 2 characters.")
-          .required("Password is required."),
+        password: Yup.string().min(
+          2,
+          "Password is too short - must contain at least 2 characters."
+        ),
         confirmPassword: Yup.string()
           .min(2, "Password is too short - must contain at least 2 characters.")
-          .required("Password is required.")
           .nullable()
           .oneOf([Yup.ref("password"), null], "Passwords must match"),
       })}
       onSubmit={(values) => {
         dispatch(resetUpdateSuccess() as any);
-        dispatch(
-          updateProfile(
-            userInfo._id!,
-            values.name,
-            values.email,
-            values.password
-          ) as any
-        );
+        if (values.password) {
+          dispatch(
+            updateProfile(
+              userInfo._id!,
+              values.name,
+              values.email,
+              values.password
+            ) as any
+          );
+        } else {
+          // Dispatch a different action or handle cases where the password is not provided.
+        }
       }}
     >
       {(formik) => (
@@ -143,12 +147,6 @@ const ProfileScreen = () => {
                         name="password"
                         placeholder="your password"
                         label="Password"
-                      />
-                      <PasswordTextField
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm your password"
-                        label="Confirm Password"
                       />
                     </FormControl>
 
