@@ -148,12 +148,10 @@ const Navbar = () => {
           onClick={isOpen ? onClose : onOpen}
         />
         <HStack>
-          <Link as={ReactLink} to="/">
-            <Flex alignItems="center" gap="10px">
-              <Icon as={GiBookCover} h={6} w={6} color="blue.500" />
-              <Text fontWeight="bold">Capstone Books</Text>
-            </Flex>
-          </Link>
+          <Flex alignItems="center" gap="10px">
+            <Icon as={GiBookCover} h={6} w={6} color="blue.500" />
+            <Text fontWeight="bold">Capstone Books</Text>
+          </Flex>
 
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
