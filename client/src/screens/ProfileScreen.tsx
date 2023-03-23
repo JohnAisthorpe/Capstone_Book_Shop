@@ -48,9 +48,9 @@ const ProfileScreen = () => {
       dispatch(resetUpdateSuccess() as any);
     }
   }, [updateSuccess, toast, dispatch]);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log("Hello");
-  };
+  // const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //   console.log("Hello");
+  // };
   // if the user is authenticated
   return userInfo ? (
     <Formik
@@ -144,6 +144,12 @@ const ProfileScreen = () => {
                         placeholder="your password"
                         label="Password"
                       />
+                      <PasswordTextField
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm your password"
+                        label="Confirm Password"
+                      />
                     </FormControl>
 
                     <Stack spacing="6">
@@ -152,9 +158,7 @@ const ProfileScreen = () => {
                         size="lg"
                         isLoading={loading}
                         type="submit"
-                        // width="25%"
                         alignSelf="center"
-                        onClick={handleClick}
                       >
                         Save
                       </Button>
